@@ -43,6 +43,8 @@ tools:
 steps:
   - name: Checkout repository
     uses: actions/checkout@v3
+  - name: Install mesonpy
+    run: pip install mesonpy
   - name: Build and run test to produce coverage report
     run: |
       # Install dependencies

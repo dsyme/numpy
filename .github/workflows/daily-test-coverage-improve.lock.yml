@@ -42,6 +42,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install mesonpy
+        run: pip install mesonpy
       - name: Build and run test to produce coverage report
         run: "# Install dependencies\npython -m pip install --upgrade pip\npip install -r requirements/test_requirements.txt\n\n# Build NumPy\npython -m pip install -e . --no-build-isolation\n\n# Run tests with coverage\npython -m pytest --cov=numpy --cov-report=xml --cov-report=html numpy/\n"
       - name: Setup agent output
