@@ -45,10 +45,15 @@ steps:
     uses: actions/checkout@v3
   - name: Build and run test to produce coverage report
     run: |
-      # This step should build your project and run tests to produce a coverage report.
-      # Replace with your actual build and test commands.
-      echo "Building project and running tests..."
-      echo "Coverage report generated."
+      # Install dependencies
+      python -m pip install --upgrade pip
+      pip install -r requirements/test_requirements.txt
+
+      # Build NumPy
+      python -m pip install -e . --no-build-isolation
+
+      # Run tests with coverage
+      python -m pytest --cov=numpy --cov-report=xml --cov-report=html numpy/
 
 ---
 
